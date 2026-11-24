@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lume — um espaço de conversa, informação e acolhimento sobre saúde.">
+  <title>Lume — Cuidado e luz para sua mente</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <button class="mobile-menu icon-button" id="mobileMenuButton" aria-label="Abrir menu" title="Abrir menu">
+        <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <a class="brand" href="#inicio" aria-label="Lume — página inicial" data-nav="home">
+        <img src="assets/logo-lume.png" alt="Lume — Cuidado e luz para sua mente">
+      </a>
+      <label class="search-box" for="globalSearch">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5"/><path d="m16 16 4.2 4.2"/></svg>
+        <input id="globalSearch" type="search" placeholder="Buscar perguntas, temas ou pessoas..." autocomplete="off">
+        <kbd>⌘ K</kbd>
+      </label>
+      <div class="top-actions">
+        <button class="icon-button notification-button" id="notificationsButton" aria-label="Notificações" title="Notificações">
+          <svg viewBox="0 0 24 24"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg>
+          <span class="notification-dot"></span>
+        </button>
+        <div class="accessibility-wrap">
+          <button class="icon-button accessibility-trigger" id="accessibilityButton" aria-label="Abrir opções de acessibilidade" aria-expanded="false" aria-controls="accessibilityPanel" title="Acessibilidade">
+            <span aria-hidden="true">◐</span><span class="sr-only">Acessibilidade</span>
+          </button>
+          <section class="accessibility-panel" id="accessibilityPanel" aria-label="Opções de acessibilidade" hidden>
+            <div class="accessibility-panel-title">Acessibilidade</div>
+            <div class="accessibility-control-row">
+              <div><strong>Modo escuro</strong><small>Escurece o fundo, os cartões e os campos para facilitar a leitura em ambientes com pouca luz</small></div>
+              <button class="accessibility-toggle" id="darkModeToggle" type="button" aria-pressed="false">Ativar</button>
+            </div>
+            <div class="accessibility-control-row zoom-row">
+              <div><strong>Zoom da página</strong><small>Ajuste o tamanho do conteúdo</small></div>
+              <div class="zoom-controls">
+                <button type="button" id="zoomOut" aria-label="Diminuir zoom">−</button>
+                <output id="zoomValue" aria-live="polite">100%</output>
+                <button type="button" id="zoomIn" aria-label="Aumentar zoom">+</button>
+              </div>
+            </div>
+            <div class="accessibility-control-row read-row">
+              <div><strong>Leitura em voz alta</strong><small>Ouça o conteúdo da seção atual em português</small></div>
+              <button class="accessibility-toggle read-toggle" id="readAloudToggle" type="button" aria-pressed="false">Ler conteúdo</button>
+            </div>
+            <button class="accessibility-reset" id="accessibilityReset" type="button">Restaurar padrão</button>
+            <p class="accessibility-help">As preferências são salvas somente neste navegador.</p>
+          </section>
+        </div>
+        <button class="profile-button" id="profileButton" aria-label="Abrir perfil demonstrativo">
+          <span class="avatar avatar-small" id="headerAvatar">V</span>
+          <span class="profile-copy"><strong id="headerName">Visitante</strong><small>Conta demonstrativa</small></span>
+          <svg class="chevron" viewBox="0 0 24 24"><path d="m8 10 4 4 4-4"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-card">
+        <div class="nav-group">
+          <button class="nav-link active" data-nav="home"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg></span>Início</button>
+          <button class="nav-link" data-nav="mine"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M5 4h14v16H5zM8 8h8M8 12h8M8 16h5"/></svg></span>Minhas perguntas</button>
+          <button class="nav-link" data-nav="saved"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M6 4h12v17l-6-4-6 4z"/></svg></span>Salvos <span class="nav-count" id="savedCount">0</span></button>
+          <button class="nav-link" data-nav="communities"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M16 20v-1.5a3.5 3.5 0 0 0-3.5-3.5h-5A3.5 3.5 0 0 0 4 18.5V20M10 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM17 4.2a4 4 0 0 1 0 7.6M17 15h.5a3.5 3.5 0 0 1 3.5 3.5V20"/></svg></span>Comunidades</button>
+        </div>
+        <div class="nav-divider"></div>
+        <div class="nav-label">Explorar</div>
+        <button class="nav-link category-nav" data-category="Saúde mental"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M12 3a4 4 0 0 0-7 2.7A4.5 4.5 0 0 0 4 14l8 7 8-7a4.5 4.5 0 0 0-1-8.3A4 4 0 0 0 12 3Z"/><path d="M9 10h6M12 7v6"/></svg></span>Saúde mental</button>
+        <button class="nav-link category-nav" data-category="Saúde íntima"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M12 21s-8-4.5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6.5-8 11-8 11Z"/><path d="M12 7v8M8 11h8"/></svg></span>Saúde íntima</button>
+        <button class="nav-link category-nav" data-category="Alimentação"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M20 4c-8 0-13 3-14 9-.5 3 1.5 6 5 6 6 0 9-7 9-15Z"/><path d="M4 21c3-5 7-8 12-11"/></svg></span>Alimentação</button>
+        <button class="nav-link category-nav" data-category="Sono"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M19 15.5A8 8 0 0 1 8.5 5 8.5 8.5 0 1 0 19 15.5Z"/><path d="m16 4 .5 1.5L18 6l-1.5.5L16 8l-.5-1.5L14 6l1.5-.5Z"/></svg></span>Sono</button>
+        <button class="nav-link category-nav" data-category="Atividade física"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="m6 9 3-3 6 6-3 3zM3 12l3-3M15 15l3-3M4 17l3 3M17 4l3 3"/></svg></span>Atividade física</button>
+        <button class="nav-link category-nav" data-category="Outros"><span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg></span>Outros assuntos</button>
+        <div class="nav-divider"></div>
+        <div class="nav-label">Conteúdo e apoio</div>
+        <button class="nav-link" data-nav="content"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m10 9 5 3-5 3z"/></svg></span>Podcasts e lives <span class="nav-new">Novo</span></button>
+        <button class="nav-link" data-nav="support"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-9 8.5 9 9 0 0 1-4-.9L3 21l1.8-4.2A8 8 0 1 1 21 11.5Z"/><path d="M8 12h8M8 9h5"/></svg></span>Espaço de apoio</button>
+      </div>
+      <div class="sidebar-note"><span class="note-mark">i</span><span>Um ambiente de troca e acolhimento. Informação compartilhada não substitui orientação profissional.</span></div>
+    </aside>
+
+    <main class="main-content" id="mainContent" tabindex="-1">
+      <!-- Conteúdo renderizado por script.js -->
+    </main>
+
+    <aside class="rightbar" id="rightbar">
+      <section class="right-card trends-card">
+        <div class="right-card-heading"><h3>Conversas em alta</h3><span class="live-indicator">ATUALIZADO</span></div>
+        <button class="trend-item" data-search="ansiedade"><span><strong>#ansiedade</strong><small>128 conversas</small></span><span class="trend-arrow">→</span></button>
+        <button class="trend-item" data-search="sono"><span><strong>#sono</strong><small>94 conversas</small></span><span class="trend-arrow">→</span></button>
+        <button class="trend-item" data-search="autocuidado"><span><strong>#autocuidado</strong><small>81 conversas</small></span><span class="trend-arrow">→</span></button>
+        <button class="trend-item" data-search="saúde íntima"><span><strong>#saúdeíntima</strong><small>61 conversas</small></span><span class="trend-arrow">→</span></button>
+      </section>
+      <section class="right-card communities-mini">
+        <div class="right-card-heading"><h3>Comunidades para acompanhar</h3></div>
+        <button class="mini-community" data-community="Saúde Mental"><span class="community-mark mint">SM</span><span><strong>Saúde Mental</strong><small>8,4 mil membros</small></span></button>
+        <button class="mini-community" data-community="Vida Saudável"><span class="community-mark blue">VS</span><span><strong>Vida Saudável</strong><small>5,1 mil membros</small></span></button>
+        <button class="mini-community" data-community="Saúde Íntima"><span class="community-mark sand">SI</span><span><strong>Saúde Íntima</strong><small>3,8 mil membros</small></span></button>
+      </section>
+      <section class="right-card support-card">
+        <div class="support-symbol"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/></svg></div>
+        <h3>Um espaço de acolhimento</h3>
+        <p>No Lume, você pode compartilhar suas dúvidas com mais privacidade. Escolha publicar com seu nome demonstrativo ou anonimamente.</p>
+        <button class="button-outline button-full" id="anonymousQuickButton">Publicar anonimamente</button>
+        <small class="fine-print">Protótipo acadêmico. As interações são demonstrativas.</small>
+      </section>
+    </aside>
+  </div>
+
+  <nav class="mobile-nav" aria-label="Navegação principal">
+    <button class="mobile-nav-link active" data-nav="home"><span>⌂</span>Início</button>
+    <button class="mobile-nav-link" data-nav="communities"><span>◎</span>Comunidades</button>
+    <button class="mobile-nav-link mobile-create" id="mobileCreateButton" aria-label="Criar publicação"><span>＋</span></button>
+    <button class="mobile-nav-link" data-nav="content"><span>▷</span>Conteúdos</button>
+    <button class="mobile-nav-link" data-nav="saved"><span>▱</span>Salvos</button>
+  </nav>
+
+  <!-- Modal de publicação -->
+  <div class="modal" id="postModal" role="dialog" aria-modal="true" aria-labelledby="postModalTitle">
+    <div class="modal-panel modal-large">
+      <div class="modal-heading"><div><span class="eyebrow-dark">COMPARTILHE COM A COMUNIDADE</span><h2 id="postModalTitle">Nova publicação</h2></div><button class="close-button" data-close="postModal" aria-label="Fechar">×</button></div>
+      <form id="postForm">
+        <div class="form-field"><label for="postTitle">Título da publicação</label><input id="postTitle" maxlength="100" required placeholder="Ex.: Como vocês cuidam da saúde emocional no dia a dia?"></div>
+        <div class="form-grid"><div class="form-field"><label for="postCategory">Categoria</label><select id="postCategory"><option>Saúde mental</option><option>Saúde íntima</option><option>Alimentação</option><option>Sono</option><option>Atividade física</option><option>Outros</option></select></div><div class="form-field"><label for="postTags">Temas (separe por vírgula)</label><input id="postTags" maxlength="80" placeholder="autocuidado, rotina"></div></div>
+        <div class="form-field"><label for="postText">Sua mensagem</label><textarea id="postText" rows="5" maxlength="900" required placeholder="Escreva sua pergunta, experiência ou informação..."></textarea><div class="field-meta"><span>Evite compartilhar dados pessoais ou informações que identifiquem você.</span><span id="postCharCount">0/900</span></div></div>
+        <label class="anonymous-option"><input type="checkbox" id="anonymousCheck"><span class="custom-check"></span><span><strong>Publicar anonimamente</strong><small>Seu nome demonstrativo não aparecerá nesta publicação.</small></span></label>
+        <div class="safety-inline">O Lume é um espaço de troca de experiências. Não publique dados sensíveis e não utilize respostas da comunidade como diagnóstico ou prescrição.</div>
+        <div class="modal-actions"><button type="button" class="button-secondary" data-close="postModal">Cancelar</button><button type="submit" class="button-primary">Publicar</button></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal de comentários -->
+  <div class="modal" id="commentsModal" role="dialog" aria-modal="true" aria-labelledby="commentsTitle">
+    <div class="modal-panel modal-large">
+      <div class="modal-heading"><div><span class="eyebrow-dark">CONVERSA DA COMUNIDADE</span><h2 id="commentsTitle">Comentários</h2></div><button class="close-button" data-close="commentsModal" aria-label="Fechar">×</button></div>
+      <div id="commentsPostSummary" class="comments-summary"></div>
+      <div id="commentsList" class="comments-list"></div>
+      <form id="commentForm" class="comment-form"><input id="commentInput" maxlength="350" required placeholder="Escreva um comentário respeitoso..."><button class="button-primary" type="submit">Enviar</button></form>
+      <p class="fine-print modal-disclaimer">Comentários ficam salvos somente neste navegador durante a demonstração.</p>
+    </div>
+  </div>
+
+  <!-- Modal de perfil demonstrativo -->
+  <div class="modal" id="profileModal" role="dialog" aria-modal="true" aria-labelledby="profileTitle">
+    <div class="modal-panel modal-small">
+      <div class="modal-heading"><div><span class="eyebrow-dark">ÁREA DEMONSTRATIVA</span><h2 id="profileTitle">Seu perfil</h2></div><button class="close-button" data-close="profileModal" aria-label="Fechar">×</button></div>
+      <div class="profile-preview"><span class="avatar avatar-large" id="profileAvatarPreview">V</span><div><strong id="profilePreviewName">Visitante</strong><small>Perfil local de demonstração</small></div></div>
+      <form id="profileForm"><div class="form-field"><label for="displayName">Nome de exibição</label><input id="displayName" maxlength="24" value="Visitante" placeholder="Como deseja aparecer?"></div><p class="fine-print">Não é necessário informar nome completo, e-mail ou telefone. Essa identificação é armazenada apenas neste navegador.</p><div class="modal-actions"><button type="button" class="button-secondary" data-close="profileModal">Cancelar</button><button type="submit" class="button-primary">Salvar preferência</button></div></form>
+    </div>
+  </div>
+
+  <!-- Modal de notificações -->
+  <div class="modal" id="notificationsModal" role="dialog" aria-modal="true" aria-labelledby="notificationsTitle">
+    <div class="modal-panel modal-small"><div class="modal-heading"><div><span class="eyebrow-dark">ATIVIDADE</span><h2 id="notificationsTitle">Notificações</h2></div><button class="close-button" data-close="notificationsModal" aria-label="Fechar">×</button></div><div class="notification-row"><span class="notification-icon">♡</span><span><strong>Bem-vindo ao Lume</strong><small>Explore as conversas e participe da comunidade.</small></span></div><div class="notification-row"><span class="notification-icon">◎</span><span><strong>Novas comunidades</strong><small>Conheça espaços sobre saúde e bem-estar.</small></span></div><p class="fine-print">Notificações fictícias para a apresentação do protótipo.</p></div>
+  </div>
+
+  <!-- Modal de conteúdo -->
+  <div class="modal" id="contentModal" role="dialog" aria-modal="true" aria-labelledby="contentModalTitle">
+    <div class="modal-panel modal-small"><div class="modal-heading"><div><span class="eyebrow-dark">CONTEÚDO DO LUME</span><h2 id="contentModalTitle">Detalhes</h2></div><button class="close-button" data-close="contentModal" aria-label="Fechar">×</button></div><div id="contentModalBody"></div><div class="modal-actions"><button class="button-primary" data-close="contentModal">Entendi</button></div></div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
